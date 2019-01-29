@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: postgres
+  user: postgres
+
+
+development:
+  <<: *default
+  database: apifractal_development
+
+
+test:
+  <<: *default
+  database: apifractal_test
+ 
+
+production:
+  <<: *default
+  database: apifractal_production
+  username: apifractal
+  password: <%= ENV['apifractal_DATABASE_PASSWORD'] %>
